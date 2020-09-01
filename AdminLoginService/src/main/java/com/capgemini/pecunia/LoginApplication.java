@@ -1,13 +1,13 @@
-package com.cg;
+package com.capgemini.pecunia;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AdminLoginServiceApplication {
+public class LoginApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AdminLoginServiceApplication.class, args);
+		SpringApplication.run(LoginApplication.class, args);
 	}
 
 }

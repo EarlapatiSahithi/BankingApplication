@@ -1,4 +1,4 @@
-package com.cg.entity;
+package com.capgemini.pecunia.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

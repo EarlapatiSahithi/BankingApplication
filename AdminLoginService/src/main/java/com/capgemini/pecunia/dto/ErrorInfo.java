@@ -1,4 +1,4 @@
-package com.cg.dto;
+package com.capgemini.pecunia.dto;
 
 import java.util.List;
 

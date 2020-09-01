@@ -1,5 +1,6 @@
-package com.cg.exceptions;
+package com.capgemini.pecunia.exceptions;
 
+@SuppressWarnings("serial")
 public class LoginException extends Exception{
 
 	public LoginException() {

@@ -1,7 +1,7 @@
-package com.cg.service;
+package com.capgemini.pecunia.service;
 
-import com.cg.entity.User;
-import com.cg.exceptions.LoginException;
+import com.capgemini.pecunia.entity.User;
+import com.capgemini.pecunia.exceptions.LoginException;
 
 public interface LoginService {
     public User doLogin(String userId, String password)throws LoginException;

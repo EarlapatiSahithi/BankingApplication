@@ -1,4 +1,4 @@
-package com.cg.service;
+package com.capgemini.pecunia.service;
 
 import java.util.Optional;
 
@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cg.dao.ILoginDao;
-import com.cg.entity.User;
-import com.cg.exceptions.LoginException;
+import com.capgemini.pecunia.dao.ILoginDao;
+import com.capgemini.pecunia.entity.User;
+import com.capgemini.pecunia.exceptions.LoginException;
 
 @Service
 public class LoginServiceImp implements LoginService{

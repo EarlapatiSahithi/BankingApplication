@@ -1,4 +1,4 @@
-package com.cg.web;
+package com.capgemini.pecunia.web;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.dto.ErrorInfo;
-import com.cg.entity.User;
-import com.cg.exceptions.LoginException;
-import com.cg.service.LoginService;
+import com.capgemini.pecunia.dto.ErrorInfo;
+import com.capgemini.pecunia.entity.User;
+import com.capgemini.pecunia.exceptions.LoginException;
+import com.capgemini.pecunia.service.LoginService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
