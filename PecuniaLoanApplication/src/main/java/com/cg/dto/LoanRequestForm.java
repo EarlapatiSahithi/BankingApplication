@@ -2,7 +2,7 @@ package com.cg.dto;
 
 import java.time.LocalDate;
 
-public class LoanRequestDto {
+public class LoanRequestForm {
 
 	private String loanRequestId;
 	private double loanAmount;
@@ -13,10 +13,10 @@ public class LoanRequestDto {
 	private double annualIncome;
 	private String customerId;
 
-	public LoanRequestDto() {
+	public LoanRequestForm() {
 		super();
 	}
-	public LoanRequestDto(String loanRequestId, double loanAmount, String loanType, Integer loanTenure,
+	public LoanRequestForm(String loanRequestId, double loanAmount, String loanType, Integer loanTenure,
 			String reqStatus, LocalDate dateOfRequest, double annualIncome, String customerId) {
 		super();
 		this.loanRequestId = loanRequestId;
