@@ -13,14 +13,11 @@ import com.cg.service.LoanRequestService;
 import com.cg.util.CgConstants;
 
 @RestController
-//@RequestMapping("/createloanreq")
-//@CrossOrigin("http://localhost:4200")
+
 public class LoanReqControllerClass {
 	@Autowired
 	LoanRequestService service;
 
-	// this method is used to request a loan, this takes the loan request object as
-	// the input, checks whether the object is  null and then passes to service layer
 	@PostMapping(CgConstants.LOAN_REQUEST_URL)
 	public String createLoanRequest(@RequestBody LoanRequestDto loanreqdto) {
 		
