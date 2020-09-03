@@ -22,10 +22,8 @@ public class LoanReqControllerClass {
 	// this method is used to request a loan, this takes the loan request object as
 	// the input, checks whether the object is  null and then passes to service layer
 	@PostMapping(CgConstants.LOAN_REQUEST_URL)
-	public String createLoanRequest(@RequestBody LoanRequestDto loanreqdto) throws Exception {
-		//if (loanreq == null) {
-			//throw new RuntimeException("object is null");
-		//} else {
+	public String createLoanRequest(@RequestBody LoanRequestDto loanreqdto) {
+		
 			String loanRequestId=service.createLoanRequest(loanreqdto);
 			return CgConstants.LOAN_REQUEST_CREATED;
 		}

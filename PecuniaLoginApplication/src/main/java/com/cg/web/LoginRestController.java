@@ -34,8 +34,6 @@ public class LoginRestController {
     Logger logger = LoggerFactory.getLogger(LoginRestController.class);
 	
 	private Map<String, User> authMap = new HashMap<>();
-	
-	
 	@PostMapping(value =CgConstants.LOGIN_URL)
 	public String getLogin(@RequestParam("userid") String userId, 
 			@RequestParam("password") String password) throws LoginException {
@@ -46,7 +44,6 @@ public class LoginRestController {
 		authMap.put(token, user);
 		return token;
 	}
-
 	@PostMapping(value = CgConstants.VERIFY_LOGIN)
 	public String verifyLogin(@RequestBody String tokenId) throws LoginException {
 		logger.info(CgConstants.TOKEN_ID + tokenId);
@@ -58,17 +55,14 @@ public class LoginRestController {
 			logger.info(user.getUserName()+ " " + user.getRole());
 			return user.getRole();
 		}
-					
-		return role;
+       return role;
 	}
-	
 	@GetMapping(value =CgConstants.LOGOUT)
 	public String logout(@RequestHeader("tokenId") String token,
 			HttpServletRequest req) {
 		authMap.remove(token);
 		return CgConstants.LOGGED_OUT;
 	}
-
 	@ExceptionHandler(LoginException.class)
 	@ResponseStatus(code = HttpStatus.FORBIDDEN)
 	public ErrorInfo handleLoginException(LoginException ex) {

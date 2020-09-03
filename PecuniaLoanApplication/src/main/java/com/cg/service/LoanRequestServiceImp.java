@@ -2,6 +2,7 @@ package com.cg.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import com.cg.dao.LoanRequestDao;
 import com.cg.dto.LoanRequestDto;
 import com.cg.entity.Customer;
 import com.cg.entity.LoanRequest;
+
 import com.cg.util.CgConstants;
 @Service
 public class LoanRequestServiceImp implements LoanRequestService {
@@ -23,7 +25,7 @@ public class LoanRequestServiceImp implements LoanRequestService {
 	
 		@Override
 	@Transactional(readOnly=false)
-	public String createLoanRequest(LoanRequestDto loanreqdto) {
+	public String createLoanRequest(LoanRequestDto loanreqdto)  {
 		LoanRequest loanrequest=new LoanRequest();
 		LocalDateTime now = LocalDateTime.now();
 		LocalDate now1=LocalDate.now();
@@ -37,9 +39,13 @@ public class LoanRequestServiceImp implements LoanRequestService {
 		loanrequest.setDateOfRequest(loanreqdto.getDateOfRequest());
 		loanrequest.setAnnualIncome(loanreqdto.getAnnualIncome());
 		Customer cust=custdao.getCustomer(loanreqdto.getCustomerId());
+		
 		loanrequest.setCustomer(cust);
-	    LoanRequest persistedLr=lrdao.save(loanrequest);
-		return loanID;
-	}
+		    LoanRequest persistedLr=lrdao.save(loanrequest);
+			return loanID;
+		
+	
+		}
+		
 
 }
