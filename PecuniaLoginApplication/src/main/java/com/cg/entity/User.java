@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.xml.bind.annotation.OverrideAnnotationOf;
 @Entity
 @Table(name="cap_login")
 public class User {
@@ -54,6 +55,11 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	@Override
+	public String toString() {
+		
+		return userID+password;
 	}
 	
 	

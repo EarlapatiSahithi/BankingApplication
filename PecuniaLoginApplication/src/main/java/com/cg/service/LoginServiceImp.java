@@ -33,7 +33,7 @@ public class LoginServiceImp implements LoginService{
 			return user;
 		}
 		
-		throw new LoginException(CgConstants. CHECK_YOUR_CREDENTIALS);
+		throw new LoginException(CgConstants.CHECK_YOUR_CREDENTIALS);
 	}
 
 	@Override

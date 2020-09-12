@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import com.cg.Exceptions.*;
 
-import com.cg.Exceptions.LoginException;
 import com.cg.dto.LoanReqMsg;
 import com.cg.dto.LoanRequestForm;
 import com.cg.service.LoanRequestService;
@@ -26,7 +26,7 @@ public class LoanReqControllerClass {
 	private RestTemplate rt;
 	
 	@PostMapping(CgConstants.LOAN_REQUEST_URL)
-	public LoanReqMsg createLoanRequest(@RequestHeader(name="tokenId",required=false) String tokenId, @RequestBody LoanRequestForm loanreqform) throws LoginException {
+	public LoanReqMsg createLoanRequest(@RequestHeader(name="tokenId",required=false) String tokenId, @RequestBody LoanRequestForm loanreqform) throws  LoginException,CustomerNotFoundException  {
 		logger.info(CgConstants.TOKEN_ID+ tokenId);
 		String role=service.validateTokenInLoginService(tokenId);
 logger.info(CgConstants.ROLE+role);

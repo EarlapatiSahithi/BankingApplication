@@ -83,8 +83,6 @@ public class LoanRequest {
 		this.customer = customer;
 	}
 
-	
-
 	public LocalDate getDateOfRequest() {
 		return dateOfRequest;
 	}

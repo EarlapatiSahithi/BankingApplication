@@ -1,15 +1,14 @@
 package com.cg.service;
-
+import java.util.Optional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
-
+import com.cg.Exceptions.CustomerNotFoundException;
 import com.cg.Exceptions.LoginException;
 import com.cg.controller.LoanReqControllerClass;
 import com.cg.dao.CustomerDao;
@@ -23,15 +22,13 @@ public class LoanRequestServiceImp implements LoanRequestService {
 	Logger logger = LoggerFactory.getLogger(LoanReqControllerClass.class);
 	@Autowired
 	LoanRequestDao lrdao;
-	
 	@Autowired
 	CustomerDao custdao;
 	@Autowired
 	private RestTemplate rt;
-	
-		@Override
+	@Override
 	@Transactional(readOnly=false)
-	public String createLoanRequest(LoanRequestForm loanreqform)   {
+	public String createLoanRequest(LoanRequestForm loanreqform) throws CustomerNotFoundException   {
 		LoanRequest loanrequest=new LoanRequest();
 			Customer customer = new Customer();
 		LocalDateTime now = LocalDateTime.now();
@@ -45,15 +42,14 @@ public class LoanRequestServiceImp implements LoanRequestService {
 		loanrequest.setDateOfRequest(LocalDate.now());
 		loanrequest.setAnnualIncome(loanreqform.getAnnualIncome());
 		Customer cust=custdao.getCustomer(loanreqform.getCustomerId());
-/*		if(customer.getCustomerId().contentEquals(loanreqform.getCustomerId())) {*/
 		loanrequest.setCustomer(cust);
 		    LoanRequest persistedLr=lrdao.save(loanrequest);
-		    return CgConstants.LOAN_REQUEST_CREATED+ loanID;
-			
-	/*	}else {
-			throw new CustomerNotFoundException("your ID is not a valid one");
-		}*/
-			
+		    
+		    Optional<Customer> optcustomer=custdao.findById(loanreqform.getCustomerId());
+			if (!optcustomer.isPresent())
+				throw new CustomerNotFoundException(CgConstants.CUSTOMER_NOT_FOUND);
+		
+			return CgConstants.LOAN_REQUEST_CREATED+ loanID;
 		}
 
 		@Override
@@ -69,13 +65,6 @@ public class LoanRequestServiceImp implements LoanRequestService {
 		}
 		
 		
-		
-	/*	
-		if(!user.getPassword().contentEquals((password)))
-			throw new LoginException(CgConstants.CHECK_YOUR_PASSWORD);
-		logger.info(CgConstants. USER_AUTHENTICATED + userId);
-		return user;
-	}*/
-		
+
 
 }
