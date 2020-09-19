@@ -17,7 +17,6 @@ public class LoginServiceImp implements LoginService{
 	@Autowired
 	private ILoginDao dao;
 	
-	
 	Logger logger = LoggerFactory.getLogger(LoginServiceImp.class);
 	
 	@Override

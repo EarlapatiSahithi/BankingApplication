@@ -24,7 +24,6 @@ public class LoanReqControllerClass {
 	LoanRequestService service;
 	@Autowired
 	private RestTemplate rt;
-	
 	@PostMapping(CgConstants.LOAN_REQUEST_URL)
 	public LoanReqMsg createLoanRequest(@RequestHeader(name="tokenId",required=false) String tokenId, @RequestBody LoanRequestForm loanreqform) throws  LoginException,CustomerNotFoundException  {
 		logger.info(CgConstants.TOKEN_ID+ tokenId);

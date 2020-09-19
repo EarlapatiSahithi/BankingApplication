@@ -25,8 +25,6 @@ import com.cg.service.LoginService;
 	public void InvalidDetails() throws LoginException 
 	{
 		
-
-
 	Assertions.assertThrows(LoginException.class,()->ser.doLogin( "2","sahithi" ));
 	}	
 	

@@ -44,11 +44,9 @@ public class LoanRequestServiceImp implements LoanRequestService {
 		Customer cust=custdao.getCustomer(loanreqform.getCustomerId());
 		loanrequest.setCustomer(cust);
 		    LoanRequest persistedLr=lrdao.save(loanrequest);
-		    
 		    Optional<Customer> optcustomer=custdao.findById(loanreqform.getCustomerId());
 			if (!optcustomer.isPresent())
 				throw new CustomerNotFoundException(CgConstants.CUSTOMER_NOT_FOUND);
-		
 			return CgConstants.LOAN_REQUEST_CREATED+ loanID;
 		}
 
@@ -64,7 +62,5 @@ public class LoanRequestServiceImp implements LoanRequestService {
 			return role;
 		}
 		
-		
-
 
 }
